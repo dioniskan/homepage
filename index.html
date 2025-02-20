@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartPage</title>
+    <style>
+        /* Основные стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Голубо-серый фон */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        /* Строка поиска */
+        .search-box {
+            margin-top: 25vh; /* Располагаем чуть ниже 1/4 страницы */
+            width: 80%;
+            max-width: 500px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 24px;
+            background-color: #ffffff; /* Светлый фон */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 8px;
+            background-color: transparent;
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #007BFF;
+        }
+
+        /* Плитки с ссылками */
+        .tiles {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 500px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .tile {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        .tile:hover {
+            background-color: #f0f0f0;
+        }
+
+        .tile h3 {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Строка поиска -->
+    <div class="search-box">
+        <input type="text" placeholder="Поиск в Google...">
+        <button>🔍</button>
+    </div>
+
+    <!-- Плитки с ссылками -->
+    <div class="tiles">
+        <!-- Пример плитки -->
+        <a href="https://chatgpt.com/" class="tile">
+            <h3>ChatGPT</h3>
+        </a>
+        <a href="https://chat.deepseek.com/" class="tile">
+            <h3>Deepseek</h3>
+        </a>
+        <a href="https://4pda.to/forum/index.php?showtopic=1050118" class="tile">
+            <h3>ReVanced</h3>
+        </a>
+        <!-- Добавляйте новые плитки здесь -->
+    </div>
+
+    <script>
+        // Обработка поиска
+        const searchBox = document.querySelector('.search-box input');
+        const searchButton = document.querySelector('.search-box button');
+
+        searchButton.addEventListener('click', () => {
+            const query = searchBox.value.trim();
+            if (query) {
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            }
+        });
+
+        searchBox.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchBox.value.trim();
+                if (query) {
+                    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

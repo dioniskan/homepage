@@ -4,115 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StartPage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25694.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* Сброс стилей */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Основные стили */
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            padding: 20px;
             color: #333;
         }
 
         /* Контейнер */
         .container {
-            width: 90%;
-            max-width: 600px;
-            text-align: center;
-        }
-
-        /* Заголовок */
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 500px;
         }
 
         /* Строка поиска */
         .search-box {
             display: flex;
+            align-items: center;
             width: 100%;
-            margin-bottom: 2rem;
+            border-radius: 12px;
+            background: #fff;
             border: 1px solid #ddd;
-            border-radius: 24px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             overflow: hidden;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .search-box:focus-within {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .search-box input {
             flex: 1;
-            padding: 0.75rem 1rem;
+            padding: 12px 16px;
             border: none;
-            font-size: 1rem;
+            outline: none;
+            font-size: 16px;
+            background: transparent;
         }
 
-        .search-box button {
-            padding: 0 1rem;
+        .search-buttons {
+            display: flex;
+            gap: 6px;
+            padding: 6px;
+        }
+
+        .search-box button,
+        .search-box a {
+            padding: 10px;
             border: none;
-            background-color: #007BFF;
-            color: #fff;
-            font-size: 1rem;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 16px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background 0.2s ease-in-out;
         }
 
-        .search-box button:hover {
-            background-color: #0056b3;
+        .search-box button:hover,
+        .search-box a:hover {
+            background-color: #e0e0e0;
         }
 
         /* Сетка ссылок */
         .link-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .link-grid a {
-            display: block;
-            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 14px;
             background-color: #fff;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             text-decoration: none;
             color: #333;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .link-grid a:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-grid img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Добро пожаловать</h1>
         <div class="search-box">
             <input type="text" placeholder="Поиск в Google..." aria-label="Поиск">
-            <button aria-label="Найти">🔍</button>
+            <div class="search-buttons">
+                <button aria-label="Найти">🔍</button>
+                <a href="https://yandex.ru/images/touch/?lr=101446&redircnt=1740046186.1" target="_blank" title="Поиск по картинкам">🖼️</a>
+            </div>
         </div>
         <div class="link-grid">
             <a href="https://chatgpt.com/">
+                <img src="https://www.google.com/s2/favicons?domain=chatgpt.com" alt="ChatGPT">
                 <h3>ChatGPT</h3>
             </a>
             <a href="https://chat.deepseek.com/">
+                <img src="https://www.google.com/s2/favicons?domain=chat.deepseek.com" alt="Deepseek">
                 <h3>Deepseek</h3>
             </a>
             <a href="https://4pda.to/forum/index.php?showtopic=1050118">
+                <img src="https://www.google.com/s2/favicons?domain=4pda.to" alt="ReVanced">
                 <h3>ReVanced</h3>
             </a>
-            <!-- Добавьте новые ссылки здесь -->
         </div>
     </div>
     <script>

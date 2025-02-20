@@ -4,119 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StartPage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Основные стили */
-        body {
+        /* Сброс стилей */
+        * {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #e0f7fa; /* Голубо-серый фон */
+            box-sizing: border-box;
+        }
+
+        /* Основные стили */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Контейнер */
+        .container {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Заголовок */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         /* Строка поиска */
         .search-box {
-            margin-top: 25vh; /* Располагаем чуть ниже 1/4 страницы */
-            width: 80%;
-            max-width: 500px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 24px;
-            background-color: #ffffff; /* Светлый фон */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
-            align-items: center;
+            width: 100%;
+            margin-bottom: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .search-box input {
             flex: 1;
+            padding: 0.75rem 1rem;
             border: none;
-            outline: none;
-            font-size: 16px;
-            padding: 8px;
-            background-color: transparent;
+            font-size: 1rem;
         }
 
         .search-box button {
-            background: none;
+            padding: 0 1rem;
             border: none;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 1rem;
             cursor: pointer;
-            font-size: 16px;
-            color: #007BFF;
-        }
-
-        /* Плитки с ссылками */
-        .tiles {
-            margin-top: 20px;
-            width: 80%;
-            max-width: 500px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-        }
-
-        .tile {
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-            text-decoration: none;
-            color: #333;
             transition: background-color 0.3s ease;
         }
 
-        .tile:hover {
-            background-color: #f0f0f0;
+        .search-box button:hover {
+            background-color: #0056b3;
         }
 
-        .tile h3 {
-            margin: 0;
-            font-size: 14px;
+        /* Сетка ссылок */
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-grid a {
+            display: block;
+            padding: 1rem;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .link-grid a:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
-    <!-- Строка поиска -->
-    <div class="search-box">
-        <input type="text" placeholder="Поиск в Google...">
-        <button>🔍</button>
+    <div class="container">
+        <h1>Добро пожаловать</h1>
+        <div class="search-box">
+            <input type="text" placeholder="Поиск в Google..." aria-label="Поиск">
+            <button aria-label="Найти">🔍</button>
+        </div>
+        <div class="link-grid">
+            <a href="https://chatgpt.com/">
+                <h3>ChatGPT</h3>
+            </a>
+            <a href="https://chat.deepseek.com/">
+                <h3>Deepseek</h3>
+            </a>
+            <a href="https://4pda.to/forum/index.php?showtopic=1050118">
+                <h3>ReVanced</h3>
+            </a>
+            <!-- Добавьте новые ссылки здесь -->
+        </div>
     </div>
-
-    <!-- Плитки с ссылками -->
-    <div class="tiles">
-        <!-- Пример плитки -->
-        <a href="https://chatgpt.com/" class="tile">
-            <h3>ChatGPT</h3>
-        </a>
-        <a href="https://chat.deepseek.com/" class="tile">
-            <h3>Deepseek</h3>
-        </a>
-        <a href="https://4pda.to/forum/index.php?showtopic=1050118" class="tile">
-            <h3>ReVanced</h3>
-        </a>
-        <!-- Добавляйте новые плитки здесь -->
-    </div>
-
     <script>
         // Обработка поиска
-        const searchBox = document.querySelector('.search-box input');
-        const searchButton = document.querySelector('.search-box button');
-
-        searchButton.addEventListener('click', () => {
-            const query = searchBox.value.trim();
+        document.querySelector('.search-box button').addEventListener('click', () => {
+            const query = document.querySelector('.search-box input').value.trim();
             if (query) {
                 window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
             }
         });
 
-        searchBox.addEventListener('keypress', (e) => {
+        document.querySelector('.search-box input').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                const query = searchBox.value.trim();
+                const query = document.querySelector('.search-box input').value.trim();
                 if (query) {
                     window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
                 }
